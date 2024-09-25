@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer mode="side" class="sidenav" close>
+
+     <div class="logo">
+       <h1>Logo SICI</h1>
+     </div>
+
+     <div class="lista-menu">
+      <mat-nav-list>
+        <mat-list-item>
+          <div class="menu-item">
+            <mat-icon class="menu">bar_chart</mat-icon>
+            <span class="menu">Dashboard</span>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="menu-item">
+            <mat-icon class="menu">view_list</mat-icon>
+            <span class="menu">Ações de controle</span>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="menu-item">
+            <mat-icon class="menu">apartment</mat-icon>
+            <span class="menu">UCI’s e UAI’s</span>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="menu-item">
+            <mat-icon class="menu">settings</mat-icon>
+            <span class="menu">Configuração</span>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+     </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar class="toolbar" >
+      <div>
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon class="icones">menu</mat-icon>
+        </button>
+
+      </div>
+      <div class="buttons-right">
+        <button mat-icon-button>
+          <mat-icon>notification_important</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon> email</mat-icon>
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu">Usuário</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <div class="content">
+
+      <app-teste></app-teste>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

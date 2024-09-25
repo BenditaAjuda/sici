@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="left">
+    <div class="form-group">
+      <div class="login-topo">
+        <div>
+          <h1 style="font-family: 'Bree Serif', serif;">Login</h1>
+          <p style="font-size: 25px;">Bem vindo</p>
+        </div>
+        <div>
+          <img class="laptop-desktop" src="../../../assets/laptop.png" width="200px" alt="">
+        </div>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label for="login">Login</label>
+        <input type="text"
+               id="login"
+               class="styled-input"
+               placeholder="Login"
+               style="margin-bottom: 5px;"
+               id="login"
+               formControlName="login"
+               >
+               <div *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
+                <small *ngIf="loginForm.get('login')?.errors?.['required']"><span style="color: brown; font-size: 18px;">Obrigatório</span></small>
+              </div>
+        <label for="Senha">Senha</label>
+        <input type="password"
+              id="senha"
+              class="styled-input"
+              placeholder="Senha"
+              formControlName="senha">
+              <div *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid">
+                <small *ngIf="loginForm.get('senha')?.errors?.['required']"><span style="color: brown; font-size: 18px;">Obrigatório</span></small>
+                <small *ngIf="loginForm.get('senha')?.errors?.['minlength']">
+                  <span style="color: brown; font-size: 18px;">6 caracteres</span>
+                </small>
+              </div>
+        <input type="checkbox" id="myInput" style="margin-top: 20px; margin-bottom: 20px;"> <span for="myInput" style="color: aliceblue;">Manter logado</span>
+        <div style="margin-bottom: 15px;">
+          <span style="color: brown; font-size: 18px;">{{ msg }}</span>
+        </div>
+        <!-- <button class="button-entrar" type="submit" [disabled]="loginForm.invalid">Entre</button> -->
+        <button class="button-entrar" (click)="onSubmit()">Entre</button>
+        <button class="button-opcoes"><mat-icon style="margin-right: 10px;">lock_open</mat-icon>Esqueci minha senha</button>
+        <button class="button-opcoes"><mat-icon style="margin-right: 10px;">person_add</mat-icon>Cadastre-se aqui</button>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <img src="../../../assets/logo-fake.png" alt="">
+  </div>
+</div>
