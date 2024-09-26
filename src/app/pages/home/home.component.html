@@ -1,68 +1,98 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="side" class="sidenav" close>
+<div class="wrapper">
+  <aside id="sidebar">
+      <div class="d-flex">
 
-     <div class="logo">
-       <h1>Logo SICI</h1>
-     </div>
-
-     <div class="lista-menu">
-      <mat-nav-list>
-        <mat-list-item>
-          <div class="menu-item">
-            <mat-icon class="menu">bar_chart</mat-icon>
-            <span class="menu">Dashboard</span>
+          <div class="sidebar-logo">
+              <a href="#">CodzSword</a>
           </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div class="menu-item">
-            <mat-icon class="menu">view_list</mat-icon>
-            <span class="menu">Ações de controle</span>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div class="menu-item">
-            <mat-icon class="menu">apartment</mat-icon>
-            <span class="menu">UCI’s e UAI’s</span>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div class="menu-item">
-            <mat-icon class="menu">settings</mat-icon>
-            <span class="menu">Configuração</span>
-          </div>
-        </mat-list-item>
-      </mat-nav-list>
-     </div>
-
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-
-    <mat-toolbar class="toolbar" >
-      <div>
-        <button mat-icon-button (click)="drawer.toggle()">
-          <mat-icon class="icones">menu</mat-icon>
-        </button>
-
       </div>
-      <div class="buttons-right">
-        <button mat-icon-button>
-          <mat-icon>notification_important</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon> email</mat-icon>
-        </button>
-        <button mat-button [matMenuTriggerFor]="menu">Usuário</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-          </mat-menu>
+      <ul class="sidebar-nav">
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link">
+                  <i class="lni lni-user"></i>
+                  <span>Profile</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link">
+                  <i class="lni lni-agenda"></i>
+                  <span>Task</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                  data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                  <i class="lni lni-protection"></i>
+                  <span>Auth</span>
+              </a>
+              <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a href="#" class="sidebar-link">Login</a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a href="#" class="sidebar-link">Register</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                  data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                  <i class="lni lni-layout"></i>
+                  <span>Multi Level</span>
+              </a>
+              <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                          data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                          Two Links
+                      </a>
+                      <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                          <li class="sidebar-item">
+                              <a href="#" class="sidebar-link">Link 1</a>
+                          </li>
+                          <li class="sidebar-item">
+                              <a href="#" class="sidebar-link">Link 2</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link">
+                  <i class="lni lni-popup"></i>
+                  <span>Notification</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link">
+                  <i class="lni lni-cog"></i>
+                  <span>Setting</span>
+              </a>
+          </li>
+      </ul>
+      <div class="sidebar-footer">
+          <a href="#" class="sidebar-link">
+              <i class="lni lni-exit"></i>
+              <span>Logout</span>
+          </a>
       </div>
-    </mat-toolbar>
+  </aside>
 
-    <div class="content">
 
+  <div class="main p-3 teste">
+    <div class="teste2">
+
+      <button class="toggle-btn" type="button" style="background-color: aliceblue;">
+        <i class="lni lni-grid-alt">Aqui</i>
+    </button>
+          <h1>
+              Sidebar Bootstrap 5
+          </h1>
+      </div>
       <app-teste></app-teste>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+
+
+
+</div>
+
