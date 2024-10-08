@@ -1,52 +1,63 @@
-<div class="container">
-  <div class="left">
-    <div class="form-group">
-      <div class="login-topo">
-        <div>
-          <h1 style="font-family: 'Bree Serif', serif;">Login</h1>
-          <p style="font-size: 25px;">Bem vindo</p>
-        </div>
-        <div>
-          <img class="laptop-desktop" src="../../../assets/laptop.png" width="200px" alt="">
+<div class="container-fluid">
+  <div class="row no-gutters" style="min-height: 100vh;">
+    <div class="col-md-6 col-12 left d-flex align-items-center justify-content-center">
+      <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 card-login" style="max-width: 400px; width: 100%; background-color: transparent;">
+          <div class="d-flex justify-content-around align-items-center">
+            <div>
+              <h1 style="font-family: 'Bree Serif', serif;">Login</h1>
+              <p>Bem vindo</p>
+            </div>
+            <div class="icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="login">Login</label>
+              <input type="text"
+                     class="form-control"
+                     id="login"
+                     placeholder="Entre com seu login"
+                     formControlName="login">
+                <div *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
+                  <small *ngIf="loginForm.get('login')?.errors?.['required']"><span>Obrigatório</span></small>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     placeholder="Entre com sua senha"
+                     formControlName="senha">
+                     <div *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid">
+                      <small *ngIf="loginForm.get('senha')?.errors?.['required']"><span>Obrigatório</span></small>
+                      <small *ngIf="loginForm.get('senha')?.errors?.['minlength']">
+                        <span>6 caracteres</span>
+                      </small>
+                    </div>
+                    <span>{{ msg }}</span>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input check" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Manter logado</label>
+            </div>
+            <div class="d-flex flex-column">
+              <button type="submit" class="btn btn-primary mb-5 mt-2 login" [disabled]="loginForm.invalid">Entre</button>
+              <button type="button" class="btn btn-secondary mb-4"><i class="bi bi-lock"></i>Esqueci minha senha</button>
+              <button type="button" class="btn btn-secondary"><i class="bi bi-person-circle"></i>Cadastre-se aqui</button>
+            </div>
+          </form>
         </div>
       </div>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <label for="login">Login</label>
-        <input type="text"
-               id="login"
-               class="styled-input"
-               placeholder="Login"
-               style="margin-bottom: 5px;"
-               id="login"
-               formControlName="login"
-               >
-               <div *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
-                <small *ngIf="loginForm.get('login')?.errors?.['required']"><span style="color: brown; font-size: 18px;">Obrigatório</span></small>
-              </div>
-        <label for="Senha">Senha</label>
-        <input type="password"
-              id="senha"
-              class="styled-input"
-              placeholder="Senha"
-              formControlName="senha">
-              <div *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid">
-                <small *ngIf="loginForm.get('senha')?.errors?.['required']"><span style="color: brown; font-size: 18px;">Obrigatório</span></small>
-                <small *ngIf="loginForm.get('senha')?.errors?.['minlength']">
-                  <span style="color: brown; font-size: 18px;">6 caracteres</span>
-                </small>
-              </div>
-        <input type="checkbox" id="myInput" style="margin-top: 20px; margin-bottom: 20px;"> <span for="myInput" style="color: aliceblue;">Manter logado</span>
-        <div style="margin-bottom: 15px;">
-          <span style="color: brown; font-size: 18px;">{{ msg }}</span>
-        </div>
-        <!-- <button class="button-entrar" type="submit" [disabled]="loginForm.invalid">Entre</button> -->
-        <button class="button-entrar" (click)="onSubmit()">Entre</button>
-        <button class="button-opcoes">Esqueci minha senha</button>
-        <button class="button-opcoes">Cadastre-se aqui</button>
-      </form>
+    </div>
+    <div class="col-md-6 d-none d-md-flex right align-items-center justify-content-center">
+       <div class="image-container">
+         <img src="../../../assets/logo-fake.png" alt="" class="img-fluid">
+       </div>
     </div>
   </div>
-  <div class="right">
-    <img src="../../../assets/logo-fake.png" alt="">
-  </div>
 </div>
+
+

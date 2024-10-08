@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AcaoControleListarComponent } from './acao-controle-listar/acao-controle-listar.component';
+import { AcaoControleListarComponent } from './acao-controle/acao-controle-listar/acao-controle-listar.component';
 import { HomeComponent } from './home/home.component';
-import { CadastrarAcaoControleComponent } from './cadastrar-acao-controle/cadastrar-acao-controle.component';
 
 const routes: Routes = [
   {
@@ -11,7 +10,7 @@ const routes: Routes = [
       { path: '', component: AcaoControleListarComponent } // Default route for 'home'
     ]
   },
-  { path: 'cadastrar-acao-controle', component: CadastrarAcaoControleComponent }
+
 ];
 
 @NgModule({

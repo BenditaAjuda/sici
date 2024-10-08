@@ -13,15 +13,13 @@ export class LoginComponent implements OnInit {
   msg: string = "";
 
   constructor(private fb: FormBuilder,
-              private router: Router
-  ) {
+              private router: Router) {}
+
+  ngOnInit() {
     this.loginForm = this.fb.group({
       login: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
-
-  ngOnInit() {
   }
 
   onSubmit() {
@@ -34,6 +32,7 @@ export class LoginComponent implements OnInit {
       }
       else {
         this.msg = "Login é teste e a senha é 123456";
+        console.log(this.msg)
       }
     } else {
       console.log('Form is invalid');
