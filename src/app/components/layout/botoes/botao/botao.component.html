@@ -1,0 +1,11 @@
+<button
+class="btn-raised"
+[disabled]="disabled"
+[ngStyle]="{
+  '--background-color': backgroundColor,
+  '--hover-color': hoverColor
+}"
+(click)="onClick($event)">
+<i class="{{icone}}"></i>
+<ng-content></ng-content>
+</button>

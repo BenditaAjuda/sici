@@ -1,0 +1,253 @@
+<div class="header-table">
+  <div>
+    <span class="title-header">Ação de Controle</span>
+  </div>
+  <div>
+    <app-botao [icone]="'bi bi-arrow-left'" (clickEvent)="voltarListarAcaoControle($event)">Voltar</app-botao>
+  </div>
+</div>
+
+<div class="flex-grow-1 form-container">
+
+  <div class="container">
+    <form [formGroup]="acaoControleForm">
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="nome"
+            placeholder="Nome"
+            [class.is-invalid]="acaoControleForm.get('nome')?.invalid && acaoControleForm.get('nome')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('nome')?.hasError('required') && acaoControleForm.get('nome')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('nome')?.hasError('minlength') || acaoControleForm.get('nome')?.hasError('maxlength')) && acaoControleForm.get('nome')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="unidadesAuditadas">Unidades auditadas</label>
+          <input type="text"
+            class="form-control"
+            id="unidadesAuditadas"
+            formControlName="unidadesAuditadas"
+            placeholder="Unidades Auditadas"
+            [class.is-invalid]="acaoControleForm.get('unidadesAuditadas')?.invalid && acaoControleForm.get('unidadesAuditadas')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('unidadesAuditadas')?.hasError('required') && acaoControleForm.get('unidadesAuditadas')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('unidadesAuditadas')?.hasError('minlength') || acaoControleForm.get('unidadesAuditadas')?.hasError('maxlength')) && acaoControleForm.get('unidadesAuditadas')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="areaExecutora">Área executora</label>
+          <input type="text"
+            class="form-control"
+            id="areaExecutora"
+            formControlName="areaExecutora"
+            placeholder="Área executora"
+            [class.is-invalid]="acaoControleForm.get('areaExecutora')?.invalid && acaoControleForm.get('areaExecutora')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('areaExecutora')?.hasError('required') && acaoControleForm.get('areaExecutora')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('areaExecutora')?.hasError('minlength') || acaoControleForm.get('areaExecutora')?.hasError('maxlength')) && acaoControleForm.get('areaExecutora')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3 mb-3">
+          <label for="ano">Ano</label>
+          <input type="text"
+            class="form-control"
+            id="ano"
+            mask="0000"
+            formControlName="ano"
+            placeholder="0000"
+            [class.is-invalid]="acaoControleForm.get('ano')?.invalid && acaoControleForm.get('ano')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('ano')?.hasError('required') && acaoControleForm.get('ano')?.touched">
+            Obrigatório
+          </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="tipoAcao">Tipo da ação</label>
+          <select
+            class="form-control"
+            id="tipoAcao"
+            formControlName="tipoAcao"
+            [class.is-invalid]="acaoControleForm.get('tipoAcao')?.invalid && acaoControleForm.get('tipoAcao')?.touched">
+            <option value="inspecao">Inspeção</option>
+            <option value="auditoria">Auditoria</option>
+            <option value="consultoria">Consultoria</option>
+          </select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('tipoAcao')?.hasError('required') && acaoControleForm.get('tipoAcao')?.touched">
+            Obrigatório
+          </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="naturezaAcao">Natureza da ação</label>
+          <ng-select
+          [items]="naturezaAcao"
+          bindLabel="label"
+          bindValue="value"
+          placeholder="Escolher..."
+          formControlName="naturezaAcao"
+          multiple="true"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('naturezaAcao')?.invalid && acaoControleForm.get('naturezaAcao')?.touched">
+        </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('naturezaAcao')?.hasError('required') && acaoControleForm.get('naturezaAcao')?.touched">
+            Obrigatório
+          </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="objetivoPpa">Objetivo PPA</label>
+          <input type="text"
+            class="form-control"
+            id="objetivoPpa"
+            formControlName="objetivoPpa"
+            placeholder="Objetico PPA"
+            [class.is-invalid]="acaoControleForm.get('objetivoPpa')?.invalid && acaoControleForm.get('objetivoPpa')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('objetivoPpa')?.hasError('required') && acaoControleForm.get('objetivoPpa')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('objetivoPpa')?.hasError('minlength') || acaoControleForm.get('objetivoPpa')?.hasError('maxlength')) && acaoControleForm.get('objetivoPpa')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6 mb-3">
+          <label for="programaDeGoverno">Programa de governo</label>
+          <input type="text"
+            class="form-control"
+            id="programaDeGoverno"
+            formControlName="programaDeGoverno"
+            placeholder="Programa de governo"
+            [class.is-invalid]="acaoControleForm.get('programaDeGoverno')?.invalid && acaoControleForm.get('programaDeGoverno')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('programaDeGoverno')?.hasError('required') && acaoControleForm.get('programaDeGoverno')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('programaDeGoverno')?.hasError('minlength') || acaoControleForm.get('programaDeGoverno')?.hasError('maxlength')) && acaoControleForm.get('programaDeGoverno')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="objetivoDoPrograma">Objetivo do programa</label>
+          <input type="text"
+            class="form-control"
+            id="objetivoDoPrograma"
+            formControlName="objetivoDoPrograma"
+            placeholder="Objetico do programa"
+            [class.is-invalid]="acaoControleForm.get('objetivoDoPrograma')?.invalid && acaoControleForm.get('objetivoDoPrograma')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('objetivoDoPrograma')?.hasError('required') && acaoControleForm.get('objetivoDoPrograma')?.touched">
+            Obrigatório
+          </span>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('objetivoDoPrograma')?.hasError('minlength') || acaoControleForm.get('objetivoDoPrograma')?.hasError('maxlength')) && acaoControleForm.get('objetivoDoPrograma')?.touched">
+            Minimo 3 e máximo 15 caracteres
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3 mb-3">
+          <label for="quantidadeDeMembros">Quantidade de menbros</label>
+          <input type="text"
+            class="form-control"
+            id="quantidadeDeMembros"
+            mask="0"
+            formControlName="quantidadeDeMembros"
+            placeholder="Quantidade de membros"
+            [class.is-invalid]="acaoControleForm.get('quantidadeDeMembros')?.invalid && acaoControleForm.get('quantidadeDeMembros')?.touched">
+            <span class="text-danger" *ngIf="acaoControleForm.get('quantidadeDeMembros')?.hasError('required') && acaoControleForm.get('quantidadeDeMembros')?.touched">
+              Obrigatório
+            </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="diasUteis">Dia úteis de realização</label>
+          <input type="text"
+            class="form-control"
+            id="diasUteis"
+            mask="0"
+            formControlName="diasUteis"
+            placeholder="Dias úteis"
+            [class.is-invalid]="acaoControleForm.get('diasUteis')?.invalid && acaoControleForm.get('diasUteis')?.touched">
+            <span class="text-danger" *ngIf="acaoControleForm.get('diasUteis')?.hasError('required') && acaoControleForm.get('diasUteis')?.touched">
+              Obrigatório
+            </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="diasUteis">Esforço total</label>
+          <input type="text"
+            class="form-control"
+            id="esforcoTotal"
+            mask="0"
+            formControlName="esforcoTotal"
+            placeholder="Esforço total">
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="classificacaoAcao">Classificação da ação</label>
+          <ng-select
+          [items]="classificacaoAcao"
+          bindLabel="label"
+          bindValue="value"
+          placeholder="Escolher..."
+          formControlName="classificacaoAcao"
+          multiple="true"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('classificacaoAcao')?.invalid && acaoControleForm.get('classificacaoAcao')?.touched">
+        </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('classificacaoAcao')?.hasError('required') && acaoControleForm.get('classificacaoAcao')?.touched">
+            Obrigatório
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-12 mb-3">
+          <label for="descricao">Descrição *</label>
+          <textarea
+            class="form-control"
+            formControlName="descricao"
+            id="descricao"
+            rows="4"
+            [class.is-invalid]="acaoControleForm.get('descricao')?.invalid && acaoControleForm.get('descricao')?.touched">
+          </textarea>
+          <span class="text-danger" *ngIf="(acaoControleForm.get('descricao')?.hasError('minlength') || acaoControleForm.get('descricao')?.hasError('maxlength')) && acaoControleForm.get('descricao')?.touched">
+            Máximo 15 caracteres
+          </span>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="botao-salvar">
+    <app-botao [icone]="'bi bi-floppy'" [disabled]="acaoControleForm.invalid" (clickEvent)="salvarAcaoDeControle($event)">Salvar</app-botao>
+  </div>
+</div>
+

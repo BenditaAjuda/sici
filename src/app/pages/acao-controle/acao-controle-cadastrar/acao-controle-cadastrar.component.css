@@ -1,0 +1,43 @@
+.header-table {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.title-header {
+  color: var(--secondary-color);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.form-container {
+  background-color: white;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.botao-salvar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+label {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+  .title-header {
+    font-size: 17px;
+    }
+  }
+

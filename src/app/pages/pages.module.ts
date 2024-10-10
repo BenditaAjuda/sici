@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AcaoControleListarComponent } from './acao-controle/acao-controle-listar/acao-controle-listar.component';
 import { HomeComponent } from './home/home.component';
-import { CadastrarAcaoControleComponent } from './acao-controle/cadastrar-acao-controle/cadastrar-acao-controle.component';
+
+import { ComponentsModule } from '../components/components.module';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -13,14 +15,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { ComponentsModule } from '../components/components.module';
+import { AcaoControleCadastrarComponent } from './acao-controle/acao-controle-cadastrar/acao-controle-cadastrar.component';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
     ComponentsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -28,13 +32,17 @@ import { ComponentsModule } from '../components/components.module';
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatToolbarModule
+    NgxMaskDirective,
+    NgxMaskPipe,
+    NgSelectModule
   ],
   declarations: [
     AcaoControleListarComponent,
+    AcaoControleCadastrarComponent,
     HomeComponent,
-    CadastrarAcaoControleComponent,
-
-  ]
+  ],
+  providers: [
+    provideEnvironmentNgxMask()
+  ],
 })
 export class PagesModule { }

@@ -1,0 +1,55 @@
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    color: var(--secondary-color);
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  width: 100%;
+  height: 100px;
+}
+
+.icones-direito {
+  margin-right: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+i {
+  cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+.list {
+  color: var(--secondary-color) !important;
+}
+
+.bell {
+  color: var(--secondary-color) !important;
+  margin-right: 25px !important;
+  font-size: 30px !important;
+}
+
+.envelope {
+  color: var(--secondary-color) !important;
+  font-size: 30px !important;
+}
+
+span {
+  font-size: 20px;
+}

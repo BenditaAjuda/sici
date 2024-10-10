@@ -2,6 +2,7 @@
 :root {
   --primary-color: #d6e1ec;
   --secondary-color: #2d3e50;
+  --secondary-hover-color: #19508a;
   --fundo-branco: #ffffff;
   --azul-login: #2d176b;
   --azul-botao: #7a96d5;
@@ -9,5 +10,11 @@
   --cinza-botao: #888397;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
+}
+
