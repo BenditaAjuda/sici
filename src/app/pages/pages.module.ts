@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AcaoControleCadastrarComponent } from './acao-controle/acao-controle-cadastrar/acao-controle-cadastrar.component';
 import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatIconModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    NgSelectModule
+    NgSelectModule,
+    MatSnackBarModule
   ],
   declarations: [
     AcaoControleListarComponent,

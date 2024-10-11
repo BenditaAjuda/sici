@@ -6,8 +6,8 @@ export interface AcaoControle {
   areaExecutora: AreaExecutora
   descricaoAcao: string
   tipoAcao: string
-  naturezasAcao: string[]
-  situacao: string
+  naturezasAcao: number[]
+  situacao: number
   unidadesAuditadas: UnidadesAuditada[]
   programaGoverno: ProgramaGoverno
   objetivoPPA: ObjetivoPpa

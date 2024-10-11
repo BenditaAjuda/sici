@@ -13,13 +13,12 @@
     <form [formGroup]="acaoControleForm">
       <div class="row">
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="nome">Nome</label>
           <input
             type="text"
             class="form-control"
             id="nome"
-            formControlName="nome"
             placeholder="Nome"
             [class.is-invalid]="acaoControleForm.get('nome')?.invalid && acaoControleForm.get('nome')?.touched">
           <span class="text-danger" *ngIf="acaoControleForm.get('nome')?.hasError('required') && acaoControleForm.get('nome')?.touched">
@@ -31,35 +30,48 @@
         </div>
 
 
-        <div class="col-md-4 mb-3">
-          <label for="unidadesAuditadas">Unidades auditadas</label>
-          <input type="text"
-            class="form-control"
-            id="unidadesAuditadas"
-            formControlName="unidadesAuditadas"
-            placeholder="Unidades Auditadas"
-            [class.is-invalid]="acaoControleForm.get('unidadesAuditadas')?.invalid && acaoControleForm.get('unidadesAuditadas')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('unidadesAuditadas')?.hasError('required') && acaoControleForm.get('unidadesAuditadas')?.touched">
+        <div class="col-md-3 mb-3">
+          <label for="unidadeAuditoriaInternaId">Unidades de auditoria interna</label>
+          <ng-select
+          [items]="unidadeAuditoria"
+          bindLabel="nome"
+          bindValue="id"
+          placeholder="Escolher..."
+          formControlName="unidadeAuditoriaInternaId"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('unidadeAuditoriaInternaId')?.invalid && acaoControleForm.get('unidadeAuditoriaInternaId')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('unidadeAuditoriaInternaId')?.hasError('required') && acaoControleForm.get('unidadeAuditoriaInternaId')?.touched">
             Obrigatório
-          </span>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('unidadesAuditadas')?.hasError('minlength') || acaoControleForm.get('unidadesAuditadas')?.hasError('maxlength')) && acaoControleForm.get('unidadesAuditadas')?.touched">
-            Minimo 3 e máximo 15 caracteres
           </span>
         </div>
 
-        <div class="col-md-4 mb-3">
-          <label for="areaExecutora">Área executora</label>
-          <input type="text"
+        <div class="col-md-3 mb-3">
+          <label for="anoProgramacao">Ano</label>
+          <input type="number"
             class="form-control"
-            id="areaExecutora"
-            formControlName="areaExecutora"
-            placeholder="Área executora"
-            [class.is-invalid]="acaoControleForm.get('areaExecutora')?.invalid && acaoControleForm.get('areaExecutora')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('areaExecutora')?.hasError('required') && acaoControleForm.get('areaExecutora')?.touched">
+            id="anoProgramacao"
+            formControlName="anoProgramacao"
+            placeholder="0000"
+            [class.is-invalid]="acaoControleForm.get('anoProgramacao')?.invalid && acaoControleForm.get('anoProgramacao')?.touched">
+          <span class="text-danger" *ngIf="acaoControleForm.get('anoProgramacao')?.hasError('required') && acaoControleForm.get('anoProgramacao')?.touched">
             Obrigatório
           </span>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('areaExecutora')?.hasError('minlength') || acaoControleForm.get('areaExecutora')?.hasError('maxlength')) && acaoControleForm.get('areaExecutora')?.touched">
-            Minimo 3 e máximo 15 caracteres
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="areaExecutoraId">Área executora</label>
+          <ng-select
+          [items]="areaExecutora"
+          bindLabel="nome"
+          bindValue="id"
+          placeholder="Escolher..."
+          formControlName="areaExecutoraId"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('areaExecutoraId')?.invalid && acaoControleForm.get('areaExecutoraId')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('areaExecutoraId')?.hasError('required') && acaoControleForm.get('areaExecutoraId')?.touched">
+            Obrigatório
           </span>
         </div>
 
@@ -68,65 +80,69 @@
       <div class="row">
 
         <div class="col-md-3 mb-3">
-          <label for="ano">Ano</label>
-          <input type="text"
-            class="form-control"
-            id="ano"
-            mask="0000"
-            formControlName="ano"
-            placeholder="0000"
-            [class.is-invalid]="acaoControleForm.get('ano')?.invalid && acaoControleForm.get('ano')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('ano')?.hasError('required') && acaoControleForm.get('ano')?.touched">
-            Obrigatório
-          </span>
-        </div>
-
-        <div class="col-md-3 mb-3">
           <label for="tipoAcao">Tipo da ação</label>
-          <select
-            class="form-control"
-            id="tipoAcao"
-            formControlName="tipoAcao"
-            [class.is-invalid]="acaoControleForm.get('tipoAcao')?.invalid && acaoControleForm.get('tipoAcao')?.touched">
-            <option value="inspecao">Inspeção</option>
-            <option value="auditoria">Auditoria</option>
-            <option value="consultoria">Consultoria</option>
-          </select>
+          <ng-select
+          [items]="tipoAcao"
+          bindLabel="label"
+          bindValue="value"
+          placeholder="Escolher..."
+          formControlName="tipoAcao"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('tipoAcao')?.invalid && acaoControleForm.get('tipoAcao')?.touched">
+          </ng-select>
           <span class="text-danger" *ngIf="acaoControleForm.get('tipoAcao')?.hasError('required') && acaoControleForm.get('tipoAcao')?.touched">
             Obrigatório
           </span>
         </div>
 
         <div class="col-md-3 mb-3">
-          <label for="naturezaAcao">Natureza da ação</label>
+          <label for="naturezasAcao">Natureza da ação</label>
           <ng-select
           [items]="naturezaAcao"
           bindLabel="label"
           bindValue="value"
           placeholder="Escolher..."
-          formControlName="naturezaAcao"
+          formControlName="naturezasAcao"
           multiple="true"
           closeOnSelect="true"
-          [class.is-invalid]="acaoControleForm.get('naturezaAcao')?.invalid && acaoControleForm.get('naturezaAcao')?.touched">
-        </ng-select>
-          <span class="text-danger" *ngIf="acaoControleForm.get('naturezaAcao')?.hasError('required') && acaoControleForm.get('naturezaAcao')?.touched">
+          [class.is-invalid]="acaoControleForm.get('naturezasAcao')?.invalid && acaoControleForm.get('naturezasAcao')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('naturezasAcao')?.hasError('required') && acaoControleForm.get('naturezasAcao')?.touched">
             Obrigatório
           </span>
         </div>
 
         <div class="col-md-3 mb-3">
-          <label for="objetivoPpa">Objetivo PPA</label>
-          <input type="text"
-            class="form-control"
-            id="objetivoPpa"
-            formControlName="objetivoPpa"
-            placeholder="Objetico PPA"
-            [class.is-invalid]="acaoControleForm.get('objetivoPpa')?.invalid && acaoControleForm.get('objetivoPpa')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('objetivoPpa')?.hasError('required') && acaoControleForm.get('objetivoPpa')?.touched">
+          <label for="situacao">Situação</label>
+          <ng-select
+          [items]="situacao"
+          bindLabel="label"
+          bindValue="value"
+          placeholder="Escolher..."
+          formControlName="situacao"
+          multiple="true"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('situacao')?.invalid && acaoControleForm.get('situacao')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('situacao')?.hasError('required') && acaoControleForm.get('situacao')?.touched">
             Obrigatório
           </span>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('objetivoPpa')?.hasError('minlength') || acaoControleForm.get('objetivoPpa')?.hasError('maxlength')) && acaoControleForm.get('objetivoPpa')?.touched">
-            Minimo 3 e máximo 15 caracteres
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="unidadesAuditadasIds">Unidades auditadas</label>
+          <ng-select
+          [items]="unidadesAuditadas"
+          bindLabel="descricao"
+          bindValue="codigo"
+          placeholder="Escolher..."
+          formControlName="unidadesAuditadasIds"
+          multiple="true"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('unidadesAuditadasIds')?.invalid && acaoControleForm.get('unidadesAuditadasIds')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('unidadesAuditadasIds')?.hasError('required') && acaoControleForm.get('unidadesAuditadasIds')?.touched">
+            Obrigatório
           </span>
         </div>
 
@@ -135,78 +151,41 @@
       <div class="row">
 
         <div class="col-md-6 mb-3">
-          <label for="programaDeGoverno">Programa de governo</label>
-          <input type="text"
-            class="form-control"
-            id="programaDeGoverno"
-            formControlName="programaDeGoverno"
-            placeholder="Programa de governo"
-            [class.is-invalid]="acaoControleForm.get('programaDeGoverno')?.invalid && acaoControleForm.get('programaDeGoverno')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('programaDeGoverno')?.hasError('required') && acaoControleForm.get('programaDeGoverno')?.touched">
+          <label for="programaGovernoCodigo">Programa de governo</label>
+          <ng-select
+          [items]="programaGoverno"
+          bindLabel="descricao"
+          bindValue="codigo"
+          placeholder="Escolher..."
+          formControlName="programaGovernoCodigo"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('programaGovernoCodigo')?.invalid && acaoControleForm.get('programaGovernoCodigo')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('programaGovernoCodigo')?.hasError('required') && acaoControleForm.get('programaGovernoCodigo')?.touched">
             Obrigatório
-          </span>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('programaDeGoverno')?.hasError('minlength') || acaoControleForm.get('programaDeGoverno')?.hasError('maxlength')) && acaoControleForm.get('programaDeGoverno')?.touched">
-            Minimo 3 e máximo 15 caracteres
           </span>
         </div>
 
         <div class="col-md-6 mb-3">
-          <label for="objetivoDoPrograma">Objetivo do programa</label>
-          <input type="text"
-            class="form-control"
-            id="objetivoDoPrograma"
-            formControlName="objetivoDoPrograma"
-            placeholder="Objetico do programa"
-            [class.is-invalid]="acaoControleForm.get('objetivoDoPrograma')?.invalid && acaoControleForm.get('objetivoDoPrograma')?.touched">
-          <span class="text-danger" *ngIf="acaoControleForm.get('objetivoDoPrograma')?.hasError('required') && acaoControleForm.get('objetivoDoPrograma')?.touched">
+          <label for="objetivoPPAId">Objetivo PPA</label>
+          <ng-select
+          [items]="objeticoPPA"
+          bindLabel="descricao"
+          bindValue="id"
+          placeholder="Escolher..."
+          formControlName="objetivoPPAId"
+          multiple="false"
+          closeOnSelect="true"
+          [class.is-invalid]="acaoControleForm.get('objetivoPPAId')?.invalid && acaoControleForm.get('objetivoPPAId')?.touched">
+          </ng-select>
+          <span class="text-danger" *ngIf="acaoControleForm.get('objetivoPPAId')?.hasError('required') && acaoControleForm.get('objetivoPPAId')?.touched">
             Obrigatório
-          </span>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('objetivoDoPrograma')?.hasError('minlength') || acaoControleForm.get('objetivoDoPrograma')?.hasError('maxlength')) && acaoControleForm.get('objetivoDoPrograma')?.touched">
-            Minimo 3 e máximo 15 caracteres
           </span>
         </div>
 
       </div>
 
       <div class="row">
-
-        <div class="col-md-3 mb-3">
-          <label for="quantidadeDeMembros">Quantidade de menbros</label>
-          <input type="text"
-            class="form-control"
-            id="quantidadeDeMembros"
-            mask="0"
-            formControlName="quantidadeDeMembros"
-            placeholder="Quantidade de membros"
-            [class.is-invalid]="acaoControleForm.get('quantidadeDeMembros')?.invalid && acaoControleForm.get('quantidadeDeMembros')?.touched">
-            <span class="text-danger" *ngIf="acaoControleForm.get('quantidadeDeMembros')?.hasError('required') && acaoControleForm.get('quantidadeDeMembros')?.touched">
-              Obrigatório
-            </span>
-        </div>
-
-        <div class="col-md-3 mb-3">
-          <label for="diasUteis">Dia úteis de realização</label>
-          <input type="text"
-            class="form-control"
-            id="diasUteis"
-            mask="0"
-            formControlName="diasUteis"
-            placeholder="Dias úteis"
-            [class.is-invalid]="acaoControleForm.get('diasUteis')?.invalid && acaoControleForm.get('diasUteis')?.touched">
-            <span class="text-danger" *ngIf="acaoControleForm.get('diasUteis')?.hasError('required') && acaoControleForm.get('diasUteis')?.touched">
-              Obrigatório
-            </span>
-        </div>
-
-        <div class="col-md-3 mb-3">
-          <label for="diasUteis">Esforço total</label>
-          <input type="text"
-            class="form-control"
-            id="esforcoTotal"
-            mask="0"
-            formControlName="esforcoTotal"
-            placeholder="Esforço total">
-        </div>
 
         <div class="col-md-3 mb-3">
           <label for="classificacaoAcao">Classificação da ação</label>
@@ -216,7 +195,7 @@
           bindValue="value"
           placeholder="Escolher..."
           formControlName="classificacaoAcao"
-          multiple="true"
+          multiple="false"
           closeOnSelect="true"
           [class.is-invalid]="acaoControleForm.get('classificacaoAcao')?.invalid && acaoControleForm.get('classificacaoAcao')?.touched">
         </ng-select>
@@ -225,20 +204,55 @@
           </span>
         </div>
 
+        <div class="col-md-3 mb-3">
+          <label for="quantidadeMembros">Quantidade de membros</label>
+          <input type="number"
+            class="form-control"
+            id="quantidadeMembros"
+            formControlName="quantidadeMembros"
+            placeholder="Quantidade de membros"
+            [class.is-invalid]="acaoControleForm.get('quantidadeMembros')?.invalid && acaoControleForm.get('quantidadeMembros')?.touched">
+            <span class="text-danger" *ngIf="acaoControleForm.get('quantidadeMembros')?.hasError('required') && acaoControleForm.get('quantidadeMembros')?.touched">
+              Obrigatório
+            </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="diasUteisRealizacao">Dia úteis para realização</label>
+          <input type="number"
+            class="form-control"
+            id="diasUteisRealizacao"
+            formControlName="diasUteisRealizacao"
+            placeholder="Dias úteis"
+            [class.is-invalid]="acaoControleForm.get('diasUteisRealizacao')?.invalid && acaoControleForm.get('diasUteisRealizacao')?.touched">
+            <span class="text-danger" *ngIf="acaoControleForm.get('diasUteisRealizacao')?.hasError('required') && acaoControleForm.get('diasUteisRealizacao')?.touched">
+              Obrigatório
+            </span>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="esforcoTotal">Esforço total</label>
+          <input type="number"
+            class="form-control"
+            id="esforcoTotal"
+            formControlName="esforcoTotal"
+            placeholder="Esforço total">
+        </div>
+
       </div>
 
       <div class="row">
 
         <div class="col-12 mb-3">
-          <label for="descricao">Descrição *</label>
+          <label for="descricaoAcao">Descrição *</label>
           <textarea
             class="form-control"
-            formControlName="descricao"
+            formControlName="descricaoAcao"
             id="descricao"
             rows="4"
-            [class.is-invalid]="acaoControleForm.get('descricao')?.invalid && acaoControleForm.get('descricao')?.touched">
+            [class.is-invalid]="acaoControleForm.get('descricaoAcao')?.invalid && acaoControleForm.get('descricaoAcao')?.touched">
           </textarea>
-          <span class="text-danger" *ngIf="(acaoControleForm.get('descricao')?.hasError('minlength') || acaoControleForm.get('descricao')?.hasError('maxlength')) && acaoControleForm.get('descricao')?.touched">
+          <span class="text-danger" *ngIf="(acaoControleForm.get('descricaoAcao')?.hasError('minlength') || acaoControleForm.get('descricaoAcao')?.hasError('maxlength')) && acaoControleForm.get('descricaoAcao')?.touched">
             Máximo 15 caracteres
           </span>
         </div>

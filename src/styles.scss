@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #d6e1ec;
   --secondary-color: #2d3e50;
@@ -16,5 +15,21 @@ html, body {
 
 body {
 font-family: 'Poppins', sans-serif;
+}
+
+.custom-snackbar {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.custom-snackbar-error {
+  background-color: #df0b0b;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
 }
 

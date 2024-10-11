@@ -5,6 +5,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AcaoControleService } from '../../../../core/services/acao-controle.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-acao-controle-listar',
@@ -23,7 +24,8 @@ export class AcaoControleListarComponent implements OnInit {
 
   constructor(private service: AcaoControleService,
               private localizacao: MatPaginatorIntl,
-              private router: Router) {
+              private router: Router,
+              private spinner: NgxSpinnerService) {
 
                 localizacao.itemsPerPageLabel = 'Itens por página';
                 localizacao.firstPageLabel = 'Primeira página';
@@ -33,7 +35,7 @@ export class AcaoControleListarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.spinner.show();
     this.service.getAcaoControle().subscribe({
       next: (response: AcaoControle[]) => {
         this.acoesDeControle = response;
@@ -43,9 +45,10 @@ export class AcaoControleListarComponent implements OnInit {
       },
       error: (error: any) => {
         console.error('Error:', error.error);
+        this.spinner.hide();
       },
       complete: () => {
-        console.log('complete.');
+        this.spinner.hide();
       }
     });
 
